@@ -28,6 +28,8 @@ import PropertyManagement from './pages/dashboard/client/PropertyManagement';
 import Properties from './pages/dashboard/client/Properties';
 import PropertyDetail from './pages/dashboard/client/PropertyDetail';
 import CustomerManagement from './pages/dashboard/client/CustomerManagement';
+import CustomerDetail from './pages/dashboard/client/CustomerDetail';
+import CustomerForm from './pages/dashboard/client/CustomerForm';
 import MeterManagement from './pages/dashboard/client/MeterManagement';
 import PaymentManagement from './pages/dashboard/client/PaymentManagement';
 
@@ -171,6 +173,44 @@ function App() {
               <CustomerManagement />
             </ProtectedRoute>
           } />
+          <Route path="client/customers/add" element={
+            <ProtectedRoute allowedRoles={['client']}>
+              <CustomerForm />
+            </ProtectedRoute>
+          } />
+          <Route path="client/customers/:id" element={
+            <ProtectedRoute allowedRoles={['client']}>
+              <CustomerDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="client/customers/:id/edit" element={
+            <ProtectedRoute allowedRoles={['client']}>
+              <CustomerForm />
+            </ProtectedRoute>
+          } />
+          
+          {/* Generic customer routes (accessible from different contexts) */}
+          <Route path="customers/add" element={
+            <ProtectedRoute allowedRoles={['client']}>
+              <CustomerForm />
+            </ProtectedRoute>
+          } />
+          <Route path="customers/:id" element={
+            <ProtectedRoute allowedRoles={['client']}>
+              <CustomerDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="customers/:id/edit" element={
+            <ProtectedRoute allowedRoles={['client']}>
+              <CustomerForm />
+            </ProtectedRoute>
+          } />
+          <Route path="properties/:id" element={
+            <ProtectedRoute allowedRoles={['client']}>
+              <PropertyDetail />
+            </ProtectedRoute>
+          } />
+          
           <Route path="client/meters" element={
             <ProtectedRoute allowedRoles={['client']}>
               <MeterManagement />
